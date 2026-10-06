@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il tuo Nome – Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&display=swap">
+<style>
+:root{--sky1:#7a2fe0;--sky2:#a65cf2;--frame:#4a1fa8;--panel:#7b3fd6;--pink:#e8b8e6;--yellow:#e8dc50;--slate:#3a3350}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Pixelify Sans",system-ui,sans-serif;background:var(--slate);color:#fff}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;padding:90px 20px 60px;display:grid;place-items:center;overflow:hidden;
+  background:
+   radial-gradient(ellipse 260px 70px at 12% 14%,#cbbfe3 60%,transparent 62%),
+   radial-gradient(ellipse 320px 80px at 80% 10%,#cbbfe3 60%,transparent 62%),
+   radial-gradient(ellipse 500px 120px at 50% 108%,#f2ebfa 60%,transparent 62%),
+   linear-gradient(var(--sky1),var(--sky2) 80%,#e0a8ff)}
+.social{position:absolute;top:18px;right:24px;display:flex;gap:22px;font-size:1.15rem;font-weight:700}
+.social a{text-decoration:none;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.social a:hover{text-decoration:underline}
+.lang{display:flex;gap:4px;margin-left:6px}
+.lang button{font:inherit;font-size:1rem;color:#fff;background:rgba(0,0,0,.2);border:2px solid transparent;border-radius:6px;padding:0 8px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--yellow);color:#1b1b1b}
+.lang button:hover{border-color:var(--yellow)}
+
+.window{position:relative;width:min(1000px,100%);border:14px solid var(--frame);border-radius:26px;background:var(--panel);
+  box-shadow:0 24px 40px rgba(40,0,90,.35);animation:drop .7s cubic-bezier(.2,1.3,.4,1) both}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:var(--frame)}
+.bar h2{margin:0 auto;color:var(--pink);font-size:clamp(1.8rem,5vw,3rem);letter-spacing:.04em}
+.btn{width:38px;height:38px;border:0;border-radius:6px;display:grid;place-items:center;color:#fff;font:700 1.3rem/1 inherit;text-decoration:none}
+.btn.min{background:#2a1060}.btn.close{background:#d01616}
+.btn:hover{filter:brightness(1.2)}
+.body{padding:56px 24px 64px;text-align:center;position:relative}
+.hi{position:absolute;left:5%;top:14%;color:var(--yellow);font-size:clamp(1.6rem,4.5vw,3rem);font-weight:700;transform:rotate(-14deg)}
+h1{margin:0;font-size:clamp(2.4rem,9vw,6rem);line-height:1;font-weight:700;text-transform:uppercase;text-shadow:0 4px 0 rgba(0,0,0,.2)}
+.role{margin:14px 0 0;font-size:clamp(1.3rem,4vw,2.4rem);text-transform:uppercase}
+.go{display:inline-block;margin-top:28px;padding:10px 22px;border-radius:8px;background:var(--yellow);color:#1b1b1b;font-weight:700;font-size:1.2rem;text-decoration:none}
+.go:hover{filter:brightness(1.08)}
+@keyframes drop{from{transform:translateY(-60px) rotate(-2deg);opacity:0}to{transform:none;opacity:1}}
+
+/* Griglia lavori */
+.work{padding:48px 24px 80px;max-width:1280px;margin:0 auto}
+.work h3{margin:0 0 24px;font-size:1.6rem}
+.grid{column-count:3;column-gap:24px}
+.tile{break-inside:avoid;margin:0 0 24px;display:block;width:100%;padding:0;border:0;background:#000;cursor:zoom-in}
+.tile img{display:block;width:100%;height:auto;image-rendering:pixelated}
+.tile.ph{aspect-ratio:1;display:grid;place-items:center;background:#2c2640;color:#9a90b5;cursor:default;font-size:1.1rem}
+.tile.ph:nth-child(2n){aspect-ratio:4/5}.tile.ph:nth-child(3n){aspect-ratio:5/4}
+.tile:hover:not(.ph){outline:3px solid var(--yellow)}
+@media(max-width:900px){.grid{column-count:2}}
+@media(max-width:560px){.grid{column-count:1}.social{gap:14px;font-size:1rem;right:14px}.hi{display:none}}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;background:rgba(10,12,18,.92);display:none;place-items:center;padding:24px;z-index:10;cursor:zoom-out}
+.lb.on{display:grid}
+.lb img{max-width:100%;max-height:100%;image-rendering:pixelated}
+@media(prefers-reduced-motion:reduce){.window{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <nav class="social" aria-label="Link social" data-i18n-aria="nav">
+    <a href="https://discord.gg/IL-TUO-INVITO" target="_blank" rel="noopener">Discord</a>
+    <a href="https://mcmodels.net/vendors/IL-TUO-ID" target="_blank" rel="noopener">MCModels</a>
+    <a href="https://builtbybit.com/creators/IL-TUO-USERNAME" target="_blank" rel="noopener">BuiltByBit</a>
+    <div class="lang" role="group" aria-label="Lingua / Language">
+      <button type="button" data-lang="it" aria-pressed="true">IT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </nav>
+
+  <div class="window">
+    <div class="bar">
+      <span class="btn min" aria-hidden="true">–</span>
+      <h2>Portfolio</h2>
+      <a class="btn close" href="#lavori" aria-label="Vai ai lavori" data-i18n-aria="close">✕</a>
+    </div>
+    <div class="body">
+      <span class="hi" aria-hidden="true">HI!</span>
+      <h1 data-i18n="name">Il tuo Nome</h1>
+      <p class="role" data-i18n="role">La tua professione :)</p>
+      <a class="go" href="#lavori" data-i18n="go">Guarda i lavori</a>
+    </div>
+  </div>
+</section>
+
+<main class="work" id="lavori">
+  <h3 data-i18n="work">Lavori</h3>
+  <div class="grid" id="grid"></div>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-label="Anteprima immagine" data-i18n-aria="preview"><img id="lbimg" alt=""></div>
+
+<script>
+// Metti le tue immagini (png, jpg, gif, webp) nella cartella "assets" e scrivi qui i nomi dei file.
+// Finché la lista è vuota vengono mostrati dei riquadri segnaposto.
+const MEDIA = [
+  // 'assets/immagine1.png',
+  // 'assets/immagine2.gif',
+];
+
+const grid = document.getElementById('grid');
+const lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg');
+
+if (MEDIA.length) {
+  MEDIA.forEach(src => {
+    const b = document.createElement('button');
+    b.className = 'tile'; b.type = 'button';
+    const i = new Image();
+    i.src = src; i.loading = 'lazy';
+    i.alt = src.split('/').pop().replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ');
+    b.appendChild(i);
+    b.onclick = () => { lbimg.src = src; lbimg.alt = i.alt; lb.classList.add('on'); };
+    grid.appendChild(b);
+  });
+} else {
+  for (let n = 1; n <= 6; n++) {
+    const d = document.createElement('div');
+    d.className = 'tile ph'; d.dataset.n = n;
+    grid.appendChild(d);
+  }
+}
+
+// Traduzioni: modifica qui i testi in italiano e in inglese.
+const TEXT = {
+  it:{title:'Il tuo Nome – Portfolio',name:'Il tuo Nome',role:'La tua professione :)',go:'Guarda i lavori',work:'Lavori',ph:'Lavoro',
+      nav:'Link social',close:'Vai ai lavori',preview:'Anteprima immagine'},
+  en:{title:'Your Name – Portfolio',name:'Your Name',role:'Your profession :)',go:'View my work',work:'Work',ph:'Work',
+      nav:'Social links',close:'Go to my work',preview:'Image preview'}
+};
+function setLang(l){
+  const t = TEXT[l] || TEXT.it;
+  document.documentElement.lang = l;
+  document.title = t.title;
+  document.querySelectorAll('[data-i18n]').forEach(e => e.textContent = t[e.dataset.i18n]);
+  document.querySelectorAll('[data-i18n-aria]').forEach(e => e.setAttribute('aria-label', t[e.dataset.i18nAria]));
+  document.querySelectorAll('.tile.ph').forEach(e => e.textContent = t.ph + ' ' + e.dataset.n);
+  document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
+  try { localStorage.setItem('lang', l); } catch (e) {}
+}
+document.querySelectorAll('[data-lang]').forEach(b => b.onclick = () => setLang(b.dataset.lang));
+let saved = null;
+try { saved = localStorage.getItem('lang'); } catch (e) {}
+setLang(saved || ((navigator.language || 'it').toLowerCase().startsWith('it') ? 'it' : 'en'));
+
+lb.onclick = () => lb.classList.remove('on');
+addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('on'); });
+</script>
+</body>
+</html>
